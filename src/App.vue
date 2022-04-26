@@ -1,5 +1,5 @@
 <template>
-  <div class="grid grid-cols-3 gap-3">
+  <div class="grid gap-3">
     <CSVImport />
   </div>
 </template>

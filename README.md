@@ -20,6 +20,8 @@ yarn install in the directory
 
 DEPENDENCIES
 yarn add vue-csv-import
+yarn add leaflet
+yarn add @vue-leaflet/vue-leaflet
 ```
 
 ### Compiles and hot-reloads for development
