@@ -22,6 +22,7 @@ DEPENDENCIES
 yarn add vue-csv-import
 yarn add leaflet
 yarn add @vue-leaflet/vue-leaflet
+yarn add axios
 ```
 
 ### Compiles and hot-reloads for development

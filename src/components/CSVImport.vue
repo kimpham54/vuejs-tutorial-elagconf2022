@@ -34,10 +34,21 @@
       </tbody>
     </table>
   </div>
+  {{ markers }}
   <div>
-    <l-map style="height: 600px" :zoom="zoom" :center="center">
+    <l-map
+      ref="myMap"
+      style="height: 600px"
+      :zoom="zoom"
+      :center="center"
+      @ready="doSomethingOnReady()"
+    >
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker :lat-lng="markerLatLng"></l-marker>
+      <l-marker
+        v-for="marker in markers"
+        :lat-lng="marker"
+        :key="marker"
+      ></l-marker>
     </l-map>
   </div>
 </template>
@@ -45,6 +56,7 @@
 <script>
 import "leaflet/dist/leaflet.css";
 import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import axios from "axios";
 import {
   VueCsvToggleHeaders,
   VueCsvMap,
@@ -68,6 +80,7 @@ export default {
   data() {
     return {
       csv: null,
+      markers: [],
       url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       attribution:
         '&copy; <a target="_blank" href="http://osm.org/copyright">OpenStreetMap</a> contributors',
@@ -79,6 +92,41 @@ export default {
   async beforeMount() {
     // HERE is where to load Leaflet components!
     this.mapIsReady = true;
+  },
+  methods: {
+    doSomethingOnReady() {
+      this.map = this.$refs.myMap.leafletObject;
+      //this.map.fitBounds(this.markers);
+    },
+  },
+  watch: {
+    markers(value) {
+      console.log(value.length);
+    },
+    csv(value) {
+      console.log(value);
+      this.markers = [];
+      value.forEach((value, index) => {
+        console.log(value.location);
+        console.log(index);
+        axios
+          .get(
+            `http://api.geonames.org/searchJSON?name=${value.location}&maxRows=1&fuzzy=0.7&username=pelagios`
+          )
+          .then((response) => {
+            const geonamesData = response.data.geonames[0];
+            const placeName = geonamesData["toponymName"];
+            const latitude = geonamesData["lat"];
+            const longitude = geonamesData["lng"];
+            console.log(`${placeName}, ${latitude}, ${longitude}`);
+            this.markers.push([parseFloat(latitude), parseFloat(longitude)]);
+            this.map.flyToBounds(this.markers, { padding: [100, 100] });
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      });
+    },
   },
 };
 </script>
