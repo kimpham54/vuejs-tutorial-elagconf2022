@@ -17,6 +17,9 @@
 install node global
 install yarn global
 yarn install in the directory
+
+DEPENDENCIES
+yarn add vue-csv-import
 ```
 
 ### Compiles and hot-reloads for development
