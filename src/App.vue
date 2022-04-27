@@ -1,18 +1,16 @@
 <template>
   <div class="grid gap-3">
-    <CSVImport />
+    <CSVPlaceFinder />
   </div>
 </template>
 
 <script>
-//import HelloWorld from "./components/HelloWorld.vue";
-import CSVImport from "./components/CSVImport.vue";
+import CSVPlaceFinder from "./components/CSVPlaceFinder.vue";
 
 export default {
   name: "App",
   components: {
-    //HelloWorld,
-    CSVImport,
+    CSVPlaceFinder,
   },
 };
 </script>

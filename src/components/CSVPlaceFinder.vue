@@ -44,11 +44,8 @@
       @ready="doSomethingOnReady()"
     >
       <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker
-        v-for="marker in markers"
-        :lat-lng="marker"
-        :key="marker"
-      ></l-marker>
+      <l-marker v-for="marker in markers" :lat-lng="marker" :key="marker">
+      </l-marker>
     </l-map>
   </div>
 </template>
@@ -65,7 +62,7 @@ import {
   VueCsvImport,
 } from "vue-csv-import";
 export default {
-  name: "CSVImport",
+  name: "CSVPlaceFinder",
   components: {
     //HelloWorld,
     VueCsvToggleHeaders,
