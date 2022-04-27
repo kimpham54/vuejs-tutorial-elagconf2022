@@ -103,9 +103,8 @@ export default {
     csv(value) {
       console.log(value);
       this.markers = [];
-      value.forEach((value, index) => {
+      value.forEach((value) => {
         console.log(value.location);
-        console.log(index);
         axios
           .get(
             `http://api.geonames.org/searchJSON?name=${value.location}&maxRows=1&fuzzy=0.7&username=pelagios`
@@ -116,8 +115,12 @@ export default {
             const latitude = geonamesData["lat"];
             const longitude = geonamesData["lng"];
             console.log(`${placeName}, ${latitude}, ${longitude}`);
-            this.markers.push([parseFloat(latitude), parseFloat(longitude)]);
-            this.map.flyToBounds(this.markers, { padding: [100, 100] });
+            if (!isNaN(parseFloat(latitude))) {
+              this.markers.push([latitude, longitude]);
+            }
+            if (this.markers.length > 0) {
+              this.map.flyToBounds(this.markers, { padding: [100, 100] });
+            }
           })
           .catch((e) => {
             console.log(e);
