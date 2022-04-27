@@ -26,7 +26,7 @@ yarn install in the directory
 
 DEPENDENCIES
 yarn add vue-csv-import
-(in index.html header: <script src="https://cdn.tailwindcss.com"></script>)
+(in index.html header: tailwind.css CDN <script src="https://cdn.tailwindcss.com"></script>)
 yarn add leaflet
 yarn add @vue-leaflet/vue-leaflet
 yarn add axios
