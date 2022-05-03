@@ -1,52 +1,54 @@
 <template>
-  <div class="CSV-import bg-slate-300 p-6 h-full">
-    <vue-csv-import
-      v-model="csv"
-      :fields="{
-        name: { required: true, label: 'Name' },
-        location: { required: true, label: 'Location' },
-      }"
-    >
-      <vue-csv-input></vue-csv-input>
-      <vue-csv-errors></vue-csv-errors>
-      <br />
-      <vue-csv-toggle-headers />
-      <vue-csv-map style="display: none" />
-    </vue-csv-import>
-    <br /><br />
-    <table
-      class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
-      v-if="csv"
-    >
-      <thead
-        class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-gray-700 dark:text-gray-400"
-      >
-        <tr>
-          <th>Name</th>
-          <th>Location</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white border-b">
-        <tr v-for="row in csv" :key="row">
-          <td>{{ row.name }}</td>
-          <td>{{ row.location }}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  {{ markers }}
   <div>
-    <l-map
-      ref="myMap"
-      style="height: 600px"
-      :zoom="zoom"
-      :center="center"
-      @ready="doSomethingOnReady()"
-    >
-      <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
-      <l-marker v-for="marker in markers" :lat-lng="marker" :key="marker">
-      </l-marker>
-    </l-map>
+    <div class="CSV-import bg-slate-300 p-6">
+      <vue-csv-import
+        v-model="csv"
+        :fields="{
+          name: { required: true, label: 'Name' },
+          location: { required: true, label: 'Location' },
+        }"
+      >
+        <vue-csv-input></vue-csv-input>
+        <vue-csv-errors></vue-csv-errors>
+        <br />
+        <vue-csv-toggle-headers />
+        <vue-csv-map style="display: none" />
+      </vue-csv-import>
+      <br /><br />
+      <table
+        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        v-if="csv"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white border-b">
+          <tr v-for="row in csv" :key="row">
+            <td>{{ row.name }}</td>
+            <td>{{ row.location }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    {{ markers }}
+    <div>
+      <l-map
+        ref="myMap"
+        style="height: 600px"
+        :zoom="zoom"
+        :center="center"
+        @ready="doSomethingOnReady()"
+      >
+        <l-tile-layer :url="url" :attribution="attribution"></l-tile-layer>
+        <l-marker v-for="marker in markers" :lat-lng="marker" :key="marker">
+        </l-marker>
+      </l-map>
+    </div>
   </div>
 </template>
 
@@ -100,10 +102,10 @@ export default {
     markers(value) {
       console.log(value.length);
     },
-    csv(value) {
+    async csv(value) {
       console.log(value);
       this.markers = [];
-      value.forEach((value) => {
+      await value.forEach((value) => {
         console.log(value.location);
         axios
           .get(
@@ -118,7 +120,8 @@ export default {
             if (!isNaN(parseFloat(latitude))) {
               this.markers.push([latitude, longitude]);
             }
-            if (this.markers.length > 0) {
+            if (this.markers.length == this.csv.length) {
+              console.log(this.markers);
               this.map.flyToBounds(this.markers, { padding: [100, 100] });
             }
           })
