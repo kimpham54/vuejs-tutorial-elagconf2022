@@ -38,8 +38,8 @@
     {{ markers }}
     <div>
       <l-map
+        id="map-container"
         ref="myMap"
-        style="height: 600px"
         :zoom="zoom"
         :center="center"
         @ready="doSomethingOnReady()"
@@ -133,3 +133,8 @@ export default {
   },
 };
 </script>
+<style scoped>
+#map-container {
+  height: 600px !important;
+}
+</style>
