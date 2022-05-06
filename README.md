@@ -22,11 +22,11 @@ To follow along, you will need to:
 ## Tutorial Steps
 FORMAT: CODEALONG
 presenter will start from scratch (from an empty project) and implement the project live. To prepare, we will have to ask participants to install node, yarn, and vue cli
-1. go through what to install, node, yarn, vue cli (ideally should be done already by all participants)
-2. explain the various options when creating a new project, (briefly explain frameworks like nuxt, etc)
-3. go through the folders that get created when you initialise a vue project, but also note that vue can be incorporated into any project using a CDN for example
-4. talk briefly about vscode and linting, plugins to make dev easier
-5. EXPLAIN BASIC VUE CONCEPTS
+1. go through what to install, node, yarn, vue cli (ideally should be done already by all participants) KIM
+2. explain the various options when creating a new project, (briefly explain frameworks like nuxt, etc) PASCAL
+3. go through the folders that get created when you initialise a vue project, but also note that vue can be incorporated into any project using a CDN for example PASCAL
+4. talk briefly about vscode and linting, plugins to make dev easier KIM
+5. EXPLAIN BASIC VUE CONCEPTS PASCAL
    1. What is a component
       1. what are the parts of a component: template, component definition, styling
       2. what are the parts and hooks of the component definition we will be using:
@@ -34,17 +34,18 @@ presenter will start from scratch (from an empty project) and implement the proj
          2. methods
          3. watch
          4. beforeMount hook
-6. start going through the first default HelloWorld.vue component, and start to modify it to do what we want to do: something that ingests a csv, gets the coords, and show them on a leaflet map
-7. also show how you can debug and see what's going on using the vue console tool and the normal console tool
-8. FIRST COMPONENT show how to import a package that will process the csv. The example csv for this tutorial can be found there: https://docs.google.com/spreadsheets/d/1ByRVJa_B0Zf0_IlQPki94OsKfodlNZbJ4wtOj4XLRgM/edit?usp=sharing
-9.  add tailwind.css into the mix for a bit of styling
-10. SECOND COMPONENT show how to import the vue3 leaflet component
-11. LAST PIECE: import axios to tie it all together: show how to go through the csv import loop, call geonames, and create the markers that will be displayed on the map
-12. if time left: add more functionalities, such as popups on markers, Q&A
-    
+6. start going through the first default HelloWorld.vue component, and start to modify it to do what we want to do: 
+   a.  something that ingests a csv KIM
+   b. gets the coords PASCAL
+   c. and show them on a leaflet map PASCAL
+9. also show how you can debug and see what's going on using the vue console tool and the normal console tool PASCAL
+10. FIRST COMPONENT show how to import a package that will process the csv. The example csv for this tutorial can be found there: https://docs.google.com/spreadsheets/d/1ByRVJa_B0Zf0_IlQPki94OsKfodlNZbJ4wtOj4XLRgM/edit?usp=sharing KIM
+
+12. SECOND COMPONENT show how to import the vue3 leaflet component PASCAL
+13. LAST PIECE: import axios to tie it all together: show how to go through the csv import loop, call geonames, and create the markers that will be displayed on the map
+14. if time left: add more functionalities, such as popups on markers, Q&A PASCAL
+16.  add tailwind.css into the mix for a bit of styling PASCAL & KIM
    
-
-
 ## Project setup
 ```
 install node global
