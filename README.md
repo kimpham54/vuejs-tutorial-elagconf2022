@@ -1,6 +1,12 @@
 # vuejs-tutorial-elagconf2022
 
-## Goal
+## What we will build
+
+Our goal is to build a simple application that allows users to upload a CSV document containing a list of museums and the city they are in.
+
+Once the CSV has been uploaded, our application will call an external geolocation service to obtain the coordinates of each of these town. 
+
+Finally, once we have all the coordinates, we will place markers for each of the museums on a map.
 
 <img width="1028" alt="Screenshot 2022-05-06 at 12 56 13" src="https://user-images.githubusercontent.com/28725039/167118926-fc3d021f-d554-4f58-9235-7db2228ef1df.png">
 
