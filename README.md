@@ -1,5 +1,10 @@
 # vuejs-tutorial-elagconf2022
 
+## Goal
+
+<img width="1028" alt="Screenshot 2022-05-06 at 12 56 13" src="https://user-images.githubusercontent.com/28725039/167118926-fc3d021f-d554-4f58-9235-7db2228ef1df.png">
+
+
 ## Tutorial Steps
 FORMAT: CODEALONG
 presenter will start from scratch (from an empty project) and implement the project live. To prepare, we will have to ask participants to install node, yarn, and vue cli
