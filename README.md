@@ -35,9 +35,9 @@ presenter will start from scratch (from an empty project) and implement the proj
          3. watch
          4. beforeMount hook
 6. start going through the first default HelloWorld.vue component, and start to modify it to do what we want to do: 
-   a.  something that ingests a csv KIM
-   b. gets the coords PASCAL
-   c. and show them on a leaflet map PASCAL
+   1.  something that ingests a csv KIM
+   2. gets the coords PASCAL
+   3. and show them on a leaflet map PASCAL
 9. also show how you can debug and see what's going on using the vue console tool and the normal console tool PASCAL
 10. FIRST COMPONENT show how to import a package that will process the csv. The example csv for this tutorial can be found there: https://docs.google.com/spreadsheets/d/1ByRVJa_B0Zf0_IlQPki94OsKfodlNZbJ4wtOj4XLRgM/edit?usp=sharing KIM
 
