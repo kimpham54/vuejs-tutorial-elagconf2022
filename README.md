@@ -17,6 +17,7 @@ To follow along, you will need to:
 - install a code editor such as VSCode or Sublime
 - install [node.js](https://nodejs.org/en/download/)
 - (optional) install [yarn](https://classic.yarnpkg.com/lang/en/docs/install/#mac-stable)
+- install [vue-cli](https://cli.vuejs.org/guide/installation.html)
 
 ## Tutorial Steps
 FORMAT: CODEALONG
