@@ -29,7 +29,7 @@ We will create this application from scratch (from an empty project) and impleme
 2. explain the various options when creating a new project, (briefly explain frameworks like nuxt, etc) (PASCAL)
 3. go through the folders that get created when you initialise a vue project, but also note that vue can be incorporated into any project using a CDN for example (PASCAL)
 4. talk briefly about vscode and linting, plugins to make dev easier (KIM)
-5. EXPLAIN BASIC VUE CONCEPTS (PASCAL)
+5. explanation of basic Vue.js concepts (PASCAL)
    1. What is a component
       1. what are the parts of a component: template, component definition, styling
       2. what are the parts and hooks of the component definition we will be using:
