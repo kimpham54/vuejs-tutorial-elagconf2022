@@ -66,7 +66,7 @@ rename your component from HelloWorld.vue to CsvViewer.vue (case sensitive, can'
 replace all declarations of HelloWorld with CsvViewer in CsvViewer.vue and App.vue
 
 
-```
+```jsx
 <template>
   <div>
 
@@ -86,7 +86,7 @@ export default {
 
 ```
 
-```
+```jsx
 <template>
   <CsvViewer />
 </template>
@@ -142,7 +142,7 @@ import {
 - we know our what we need from our csv, we add name and location. take a look at csv file
 - add extra components
 
-```html
+```jsx
     <vue-csv-import
       v-model="csv"
       :fields="{
@@ -243,7 +243,7 @@ import "leaflet/dist/leaflet.css";
 
 - finally use it in html template, syntax is vue based LMap or l-map both works
 
-```html
+```jsx
     <l-map>
       <l-marker></l-marker>
       <l-tile-layer></l-tile-layer>
@@ -252,7 +252,7 @@ import "leaflet/dist/leaflet.css";
 
 https://vue2-leaflet.netlify.app/components/LMarker.html#demo
 
-```html
+```jsx
     <l-map ref="myMap" style="height: 500px">
       <l-marker></l-marker>
       <l-tile-layer
@@ -263,13 +263,13 @@ https://vue2-leaflet.netlify.app/components/LMarker.html#demo
 
 then add variables for map
 
-```
+```jsx
 zoom="2"
 ```
 
 - now for tile layer variables. no need to add attribution parameter
 
-```html
+```jsx
     <l-map style="height: 500px" :zoom="2">
       <l-marker></l-marker>
       <l-tile-layer
@@ -295,7 +295,7 @@ zoom="2"
     ></l-map>
 ```
 
-```html
+```jsx
     <l-map style="height: 500px" :zoom="2">
       <l-marker :lat-lng="markerLatLng"></l-marker>
       <l-tile-layer :url="url"></l-tile-layer
@@ -491,7 +491,7 @@ now a variable in component can output it
 
 es6 then(function (response) { vs (response) arrow function
 
-```
+```jsx
     <br /><br />
     {{ csv }}
     <br/>
@@ -508,7 +508,7 @@ to do this use another functaionlity vue provides, v for iterate in html
 
 vue needs a key, set markers, should palce markers in map
 
-```html
+```jsx
     <l-map style="height: 500px" :zoom="2">
       <l-marker
         v-for="marker in markers"
@@ -526,7 +526,7 @@ go back into data option remove       markerLatLng: [51.504, -0.159],
 
 remove console. logs
 
-```
+```javascript
  watch: {
     csv(value) {
       value.forEach((element) => {
@@ -553,7 +553,7 @@ automatically frames markers
 
 add l-map ref
 
-```
+```jsx
 <l-map
       ref="myMap"
       style="height: 500px"
@@ -571,7 +571,7 @@ add l-map ref
 
 get access to leaflet map object to do stuff on
 
-```
+```javascript
   data() {
     return {
       csv: null,
@@ -583,7 +583,7 @@ get access to leaflet map object to do stuff on
 
 ```
 
-```
+```javascript
   methods: {
     doSomethingOnReady() {
       this.map = this.$refs.myMap.leafletObject;
@@ -598,7 +598,7 @@ use special fly to bounds in leaflet https://www.tabnine.com/code/javascript/fun
 
 when markers are as long as csv array meaning when array is completed go through loop, fly to bounds
 
-```
+```javascript
   watch: {
     csv(value) {
       value.forEach((element) => {
@@ -618,5 +618,119 @@ when markers are as long as csv array meaning when array is completed go through
       });
     },
   },
+
+```
+
+CsvViewer.vue
+```jsx
+<template>
+  <div>
+    <vue-csv-import
+      v-model="csv"
+      :fields="{
+        name: { required: true, label: 'Name' },
+        location: { required: true, label: 'Location' },
+      }"
+    >
+      <vue-csv-toggle-headers></vue-csv-toggle-headers>
+      <vue-csv-errors></vue-csv-errors>
+      <vue-csv-input></vue-csv-input>
+      <vue-csv-map></vue-csv-map>
+    </vue-csv-import>
+
+    <l-map style="height: 500px" :zoom="2">
+      <l-marker
+        v-for="marker in markers"
+        :lat-lng="marker"
+        :key="marker"
+      ></l-marker>
+      <l-tile-layer :url="url"></l-tile-layer
+    ></l-map>
+    <br /><br />
+    {{ csv }}
+    <br />
+    {{ markers }}
+  </div>
+</template>
+
+<script>
+import {
+  VueCsvToggleHeaders,
+  VueCsvMap,
+  VueCsvInput,
+  VueCsvErrors,
+  VueCsvImport,
+} from "vue-csv-import";
+
+import { LMap, LTileLayer, LMarker } from "@vue-leaflet/vue-leaflet";
+import "leaflet/dist/leaflet.css";
+import axios from "axios";
+
+export default {
+  name: "CsvViewer",
+  components: {
+    VueCsvToggleHeaders,
+    VueCsvMap,
+    VueCsvInput,
+    VueCsvErrors,
+    VueCsvImport,
+    LMap,
+    LTileLayer,
+    LMarker,
+  },
+
+  data() {
+    return {
+      csv: null,
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      markers: [],
+    };
+  },
+
+  watch: {
+    csv(value) {
+      value.forEach((element) => {
+        axios
+          .get(
+            `http://api.geonames.org/searchJSON?q=${element.location}&maxRows=1&username=pelagios`
+          )
+          .then((response) => {
+            const geonamesData = response.data.geonames[0];
+            const latitude = geonamesData["lat"];
+            const longitude = geonamesData["lng"];
+            this.markers.push([latitude, longitude]);
+          });
+      });
+    },
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
+
+```
+
+
+App.vue
+```jsx
+<template>
+  <CsvViewer />
+</template>
+
+<script>
+import CsvViewer from "./components/CsvViewer.vue";
+
+export default {
+  name: "App",
+  components: {
+    CsvViewer,
+  },
+};
+</script>
+
+<style>
+</style>
 
 ```
