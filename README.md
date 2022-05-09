@@ -1,5 +1,7 @@
 # vuejs-tutorial-elagconf2022
 
+Welcome to our ELAG 2022 Vue for beginners code along!
+
 ## What we will build
 
 <img width="1006" alt="Screenshot 2022-05-06 at 13 26 13" src="https://user-images.githubusercontent.com/28725039/167122841-5f9d0722-3b8b-4188-ba18-a8890ad50fb2.png">
@@ -20,13 +22,14 @@ To follow along, you will need to:
 - install [vue-cli](https://cli.vuejs.org/guide/installation.html)
 
 ## Tutorial Steps
-FORMAT: CODEALONG
-presenter will start from scratch (from an empty project) and implement the project live. To prepare, we will have to ask participants to install node, yarn, and vue cli
-1. go through what to install, node, yarn, vue cli (ideally should be done already by all participants)
-2. explain the various options when creating a new project, (briefly explain frameworks like nuxt, etc)
-3. go through the folders that get created when you initialise a vue project, but also note that vue can be incorporated into any project using a CDN for example
-4. talk briefly about vscode and linting, plugins to make dev easier
-5. EXPLAIN BASIC VUE CONCEPTS
+We will create this application from scratch (from an empty project) and implement the project live. To prepare, participants should ideally install node, yarn, and vue cli. It would also be quite useful to have installed a code editor such as VSCode or Sublime.
+
+
+1. go through what to install, node, yarn, vue cli (ideally should be done already by all participants) (KIM)
+2. explain the various options when creating a new project, (briefly explain frameworks like nuxt, etc) (PASCAL)
+3. go through the folders that get created when you initialise a vue project, but also note that vue can be incorporated into any project using a CDN for example (PASCAL)
+4. talk briefly about vscode and linting, plugins to make dev easier (KIM)
+5. explanation of basic Vue.js concepts (PASCAL)
    1. What is a component
       1. what are the parts of a component: template, component definition, styling
       2. what are the parts and hooks of the component definition we will be using:
@@ -34,25 +37,28 @@ presenter will start from scratch (from an empty project) and implement the proj
          2. methods
          3. watch
          4. beforeMount hook
-6. start going through the first default HelloWorld.vue component, and start to modify it to do what we want to do: something that ingests a csv, gets the coords, and show them on a leaflet map
-7. also show how you can debug and see what's going on using the vue console tool and the normal console tool
-8. FIRST COMPONENT show how to import a package that will process the csv. The example csv for this tutorial can be found there: https://docs.google.com/spreadsheets/d/1ByRVJa_B0Zf0_IlQPki94OsKfodlNZbJ4wtOj4XLRgM/edit?usp=sharing
-9.  add tailwind.css into the mix for a bit of styling
-10. SECOND COMPONENT show how to import the vue3 leaflet component
-11. LAST PIECE: import axios to tie it all together: show how to go through the csv import loop, call geonames, and create the markers that will be displayed on the map
-12. if time left: add more functionalities, such as popups on markers, Q&A
-    
+6. start going through the first default HelloWorld.vue component, and start to modify it to do what we want to do: 
+   1.  something that ingests a csv (KIM)
+   2. gets the coords for each of the rows in the CSV from a remote geolocation service (PASCAL)
+   3. show markers based on these coordinates on the map map (PASCAL)
+9. also show how you can debug and see what's going on using the vue console tool and the normal console tool (PASCAL)
+
+## Our application's components
+
+1. FIRST COMPONENT show how to import a package that will process the csv. The example csv for this tutorial can be found there: https://docs.google.com/spreadsheets/d/1ByRVJa_B0Zf0_IlQPki94OsKfodlNZbJ4wtOj4XLRgM/edit?usp=sharing (KIM)
+
+2. SECOND COMPONENT show how to import the vue3 leaflet component (PASCAL), and add it to our application (PASCAL)
+3. LAST PIECE: import axios to tie it all together: show how to go through the csv import loop, call geonames, and create the markers that will be displayed on the map (PASCAL)
+
+4. if there is time left: add more functionalities, such as popups on markers, (PASCAL)
+5.  add tailwind.css into the mix for a bit of styling (PASCAL & KIM)
+6.  Q&A (PASCAL)
    
-
-
 ## Project setup
 ```
-install node global
-install yarn global
-yarn global add @vue/cli
 vue create elag_tutorial
 cd elag_tutorial
-yarn install in the directory
+yarn
 
 DEPENDENCIES
 yarn add vue-csv-import
