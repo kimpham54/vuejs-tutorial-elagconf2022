@@ -1,7 +1,7 @@
 ## Tutorial Codealong
 https://github.com/kimpham54/vuejs-tutorial-elagconf2022/blob/main/src/components/CSVPlaceFinder.vue
 
-PASCAL START HERE
+## INTRODUCTION - PASCAL
 
 show diagram
 
@@ -16,11 +16,13 @@ methods - functions
 hooks - actions that happen when something happens
 
 
-APP GOALS
+### APP GOALS
+
 1. import a CSV
 2. parse CSV
 3. get coordinates from CSV
 4. place coordinates on a map
+1. kim
 
 
 ```
@@ -66,6 +68,8 @@ rename your component from HelloWorld.vue to CsvViewer.vue (case sensitive, can'
 replace all declarations of HelloWorld with CsvViewer in CsvViewer.vue and App.vue
 
 
+CsvViewer.vue
+
 ```jsx
 <template>
   <div>
@@ -85,6 +89,8 @@ export default {
 
 
 ```
+
+App.vue
 
 ```jsx
 <template>
@@ -108,7 +114,7 @@ export default {
 ```
 - remove everything, have nothing http://localhost:8080/
 
-KIM TAKE OVER HERE
+## CSV IMPORTER USING VUE-CSV-IMPORT - KIM
 
 - google csv upload vue
 - npm global library register modules. we are using vue3 check versions compatibility and changes. components compatible with older versions
@@ -208,6 +214,8 @@ TURNS CSV INTO JSON ARRAY
 - show leaflet library https://leafletjs.com/ we know leaflet already
 - search "vue3 leaflet" in google see a component exists in npm js https://www.npmjs.com/package/@vue-leaflet/vue-leaflet, list of various subcomponents that can be used, summarize page
 - start to add it into our application
+
+## BUILDING THE MAP WITH LEAFLET - KIM
 
 MAP TIME using https://github.com/vue-leaflet/vue-leaflet
 
@@ -329,7 +337,7 @@ map
 
 to build the connection, we need a way to create coordinates. we use a geocoder called geonames. we also need a new library called axios, a popular http library that lets you work with apis
 
-PASCAL START HERE
+## LINKING THE CSV IMPORTER WITH MAP - GEONAMES API - PASCAL
 
 RETRIEVE GEONAMES API
 
@@ -545,7 +553,7 @@ remove console. logs
   },
 ```
 
-NO MORE END HERE STOP
+## STOP HERE 
 
 make pretty scrolling better zooming
 
