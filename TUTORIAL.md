@@ -560,13 +560,15 @@ CSVViewer.vue
 
 #### Put markers in data
 
-```
-  data() {
+```javascript
+  
+    data() {
     return {
       csv: null,
-      zoom: 2,
-      markers: [],
+      url: "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+      markerLatLng: [51.504, -0.159],
       map: null,
+      markers: [],
     };
   },
   ```
