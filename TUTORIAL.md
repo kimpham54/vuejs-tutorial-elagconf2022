@@ -558,6 +558,19 @@ CSVViewer.vue
 - now a variable in component can output it
 - es6 then(function (response) { vs (response) arrow function
 
+#### Put markers in data
+
+```
+  data() {
+    return {
+      csv: null,
+      zoom: 2,
+      markers: [],
+      map: null,
+    };
+  },
+  ```
+
 #### Display markers output in template to check it's working
 
 CSVViewer.vue
