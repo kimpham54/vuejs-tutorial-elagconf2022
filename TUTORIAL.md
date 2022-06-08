@@ -1,7 +1,10 @@
 # Tutorial Codealong
-https://vuejs.org/guide/introduction.html
 
-## INTRODUCTION - PASCAL
+## Contacts
+- Kim Pham [@tolloid on Twitter](https://twitter.com/tolloid) or kimpham54 at g.m.a.i.l-c.o.m
+- Pascal Belouin pbelouin at mpiwg-berlin.mpg.de
+
+## INTRODUCTION - Pascal and Kim
 
 - show diagram
 - show final app product
@@ -831,3 +834,16 @@ export default {
 </style>
 
 ```
+
+### Demos
+- mpiwg rise https://docusky.org.tw/DocuSky/docuTools/ComposeThdlExportXml/RISE/
+- mpiwg sound and science https://soundandscience.de/static/leaflet/app/dist/index.html
+
+- vue with elasticsearch https://elastic.github.io/vue-search-ui-demo/?size=n_20_n
+- vue with algolia https://www.algolia.com/doc/guides/building-search-ui/resources/demos/vue/
+- vue with instantsearch typesense https://github.com/typesense/typesense-vue-instantsearch-demo
+
+- even more vue examples https://vuejsexamples.com/tag/search/
+
+### More Notes
+- Useful: https://vuejs.org/guide/introduction.html or https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started
