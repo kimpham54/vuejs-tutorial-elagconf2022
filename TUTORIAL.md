@@ -794,7 +794,89 @@ CSVViewer.vue
       <l-tile-layer :url="url"></l-tile-layer
     ></l-map>
 ```
+## ADD TAILWIND.CSS for some styling
 
+- add the tailwind css CDN in index.html
+
+public/index.html
+
+```html
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+```
+
+- style the app container in index.html
+
+public/index.html
+
+```html
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app" class="p-6 h-full"></div>
+    <!-- built files will be auto injected -->
+  </body>
+```
+- add the grid css class in App.vue
+
+App.vue
+
+```jsx
+<template>
+  <div class="grid gap-3">
+    <CSVPlaceFinder />
+  </div>
+</template>
+```
+
+- start styling the component by putting the csv import component into a div, and style this div
+
+CsvViewer.vue
+
+```jsx
+<template>
+  <div>
+    <div class="CSV-import bg-slate-300 p-6">
+```
+- hide the CSV map functionality (a bit dirty)
+
+```jsx
+        <vue-csv-map style="display: none" />
+```  
+
+- put the contents of the csv data element in a tailwind-styled table
+
+CsvViewer.vue
+
+```jsx
+<br /><br />
+      <table
+        class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        v-if="csv"
+      >
+        <thead
+          class="text-xs text-gray-700 uppercase bg-slate-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white border-b">
+          <tr v-for="row in csv" :key="row">
+            <td>{{ row.name }}</td>
+            <td>{{ row.location }}</td>
+          </tr>
+        </tbody>
+      </table>
+```
 
 
 ## FINAL EXAMPLES
