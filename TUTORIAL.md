@@ -716,6 +716,86 @@ CSVViewer.vue
   },
 
 ```
+## ADD POPUPS
+
+- add LPopup in the import
+
+CsvViewer.vue
+
+```javascript
+import { LMap, LTileLayer, LMarker, LPopup } from "@vue-leaflet/vue-leaflet";
+```
+
+- add LPopup as a component in the CsvViewer Component
+
+```javascript
+  components: {
+    VueCsvToggleHeaders,
+    VueCsvMap,
+    VueCsvInput,
+    VueCsvErrors,
+    VueCsvImport,
+    LMap,
+    LTileLayer,
+    LMarker,
+    LPopup,
+  },
+```
+
+- modify the way marker data is stored, to add the name to each marker element
+
+```javascript
+  this.markers.push({
+    coordinates: [latitude, longitude],
+    name: element.name,
+  });
+```
+
+- change the way the latitude and longitudes are taken from the markers array in the LMarker tag
+
+```jsx
+      <l-marker
+        v-for="marker in markers"
+        :lat-lng="marker.coordinates"
+        :key="marker"
+      >
+ ```
+ 
+ - add the LPopup tag and display the name element of the marker
+
+```jsx
+      <l-marker
+        v-for="marker in markers"
+        :lat-lng="marker.coordinates"
+        :key="marker"
+      >
+        <l-popup>{{ marker.name }}</l-popup>
+      </l-marker>
+```
+
+
+
+
+
+CSVViewer.vue
+
+```jsx
+<l-map
+      ref="myMap"
+      style="height: 500px"
+      :zoom="2"
+      @ready="doSomethingOnReady"
+    >
+      <l-marker
+        v-for="marker in markers"
+        :lat-lng="marker"
+        :key="marker"
+      ></l-marker>
+      <l-tile-layer :url="url"></l-tile-layer
+    ></l-map>
+```
+
+
 
 ## FINAL EXAMPLES
 
