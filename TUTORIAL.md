@@ -1009,3 +1009,6 @@ export default {
 
 ### More Notes
 - Useful: https://vuejs.org/guide/introduction.html or https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Vue_getting_started
+
+### PAD for ELAG workshop
+- https://pad.riseup.net/p/ELAG_2022_VUE_WORKSHOP
